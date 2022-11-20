@@ -1,7 +1,7 @@
-// Not sure why this warning is there. Will fix later.
-// ignore: depend_on_referenced_packages
 import 'dart:convert';
 
+// Not sure why this warning is there. Will fix later.
+// ignore: depend_on_referenced_packages
 import 'package:mockito/annotations.dart';
 import 'package:http/http.dart';
 
@@ -15,13 +15,8 @@ class BeerAPI {
     List beers = [];
 
     Response response = await get(url);
-
     beers = jsonDecode(response.body);
 
     return beers;
-  }
-
-  int ping() {
-    return -1;
   }
 }

@@ -15,7 +15,6 @@ void main() {
       if (kMockBeerAPI) {
         beerAPI = MockBeerAPI();
 
-        when(beerAPI.ping()).thenReturn(-1);
         when(beerAPI.getBeers()).thenReturn(
           Future.delayed(
             const Duration(milliseconds: 5),
@@ -23,12 +22,6 @@ void main() {
           ),
         );
       }
-
-      group('.ping', () {
-        test('Should return -1', () {
-          expect(beerAPI.ping(), -1);
-        });
-      });
       group('.getBeers', () {
         test('Should return a List', () async {
           expect(await beerAPI.getBeers(), isList);
