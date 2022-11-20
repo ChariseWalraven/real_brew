@@ -1,9 +1,9 @@
-import 'package:real_brew/models/hops.dart';
+import 'package:real_brew/models/hop.dart';
 import 'package:real_brew/models/malt.dart';
 
 class Ingredients {
   final List<Malt> malt;
-  final List<Hops> hops;
+  final List<Hop> hops;
   final String yeast;
 
   Ingredients({
@@ -13,8 +13,10 @@ class Ingredients {
   });
 
   factory Ingredients.fromJson(Map<String, dynamic> json) {
-    List<Malt> malt = List.castFrom(json['malt']);
-    List<Hops> hops = List.castFrom(json['hops']);
+    List maltJson = json['malt'];
+    List hopsJson = json['hops'];
+    List<Malt> malt = maltJson.map((mJson) => Malt.fromJson(mJson)).toList();
+    List<Hop> hops = hopsJson.map((hJson) => Hop.fromJson(hJson)).toList();
 
     return Ingredients(
       malt: malt,
