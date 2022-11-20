@@ -1,24 +1,24 @@
 import 'amount.dart';
 
-class Hops {
+class Hop {
   final String name;
   final Amount amount;
   final String add;
   final String attribute;
 
-  Hops({
+  Hop({
     required this.name,
     required this.amount,
     required this.add,
     required this.attribute,
   });
 
-  factory Hops.fromJson(Map<String, dynamic> json) {
-    return Hops(
-      name: json['name'],
-      amount: json['amount'],
-      add: json['add'],
-      attribute: json['attribute'],
+  factory Hop.fromJson(Map<String, dynamic> json) {
+    return Hop(
+      name: json['name'] as String,
+      amount: Amount.fromJson(json['amount']),
+      add: json['add'] as String,
+      attribute: json['attribute'] as String,
     );
   }
 

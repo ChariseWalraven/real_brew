@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:real_brew/models/amount.dart';
 import 'package:real_brew/models/beer_recipe.dart';
+import 'package:real_brew/models/hop.dart';
 import 'package:real_brew/models/volume.dart';
 
 import 'package:real_brew/services/beer_api.mocks.dart';
@@ -50,12 +51,22 @@ void main() async {
         expect(dummyAmount.unit.runtimeType, String);
       });
     });
-    // TODO
-    group('Fermentation', () {});
-    // TODO
-    group('Hops', () {});
-    // TODO
-    group('Ingredients', () {});
+
+    group('Hop', () {
+      Hop dummyHops = Hop.fromJson(jsonDecode(dummyHopsData));
+      test('Has property name of type String.', () {
+        expect(dummyHops.name.runtimeType, String);
+      });
+      test('Has property amount of type Amount.', () {
+        expect(dummyHops.amount.runtimeType, Amount);
+      });
+      test('Has property add of type String.', () {
+        expect(dummyHops.add.runtimeType, String);
+      });
+      test('Has property attribute of type String.', () {
+        expect(dummyHops.attribute.runtimeType, String);
+      });
+    });
 
     group('Volume', () {
       Volume dummyVolume = Volume.fromJson(jsonDecode(dummyVolumeData));
