@@ -2,26 +2,33 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 import 'package:real_brew/services/beer_api.mocks.dart';
-// import 'package:real_brew/services/beer_api.dart';
+import 'package:real_brew/services/beer_api.dart';
+
+import 'test.settings.dart';
 
 void main() {
   group('Services', () {
     group('BeerAPI', () {
-      final MockBeerAPI beerAPI = MockBeerAPI();
-      group('.ping', () {
-        test('Should return -1', () {
-          when(beerAPI.ping()).thenReturn(-1);
-          expect(beerAPI.ping(), -1);
-        });
-      });
+      BeerAPI beerAPI = BeerAPI();
+
+      // setup mocks if using
+      if (kMockBeerAPI) {
+        beerAPI = MockBeerAPI();
+
+        when(beerAPI.getBeers()).thenReturn(
+          Future.delayed(
+            const Duration(milliseconds: 5),
+            () => List.filled(25, ''),
+          ),
+        );
+      }
       group('.getBeers', () {
-        when(beerAPI.getBeers()).thenReturn(List.filled(25, ''));
-        var getBeersResult = beerAPI.getBeers();
-        test('Should return a List', () {
-          expect(getBeersResult, isList);
+        test('Should return a List', () async {
+          expect(await beerAPI.getBeers(), isList);
         });
-        test('With 25 items', () {
-          expect(getBeersResult.length, equals(25));
+        test('With 25 items', () async {
+          var result = await beerAPI.getBeers();
+          expect(result.length, 25);
         });
       });
     });
