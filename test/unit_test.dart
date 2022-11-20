@@ -8,6 +8,8 @@ import 'package:real_brew/models/fermentation.dart';
 import 'package:real_brew/models/hop.dart';
 import 'package:real_brew/models/ingredients.dart';
 import 'package:real_brew/models/malt.dart';
+import 'package:real_brew/models/mash_temp.dart';
+import 'package:real_brew/models/method.dart';
 import 'package:real_brew/models/volume.dart';
 
 import 'package:real_brew/services/beer_api.mocks.dart';
@@ -103,6 +105,95 @@ void main() async {
       test('Has property volume of type Volume', () {
         expect(dummyFermentation.temp.runtimeType, Volume);
       });
+    });
+  });
+
+// TODO: Mash Temp test
+  group('MashTemp', () {});
+
+  group('Method', () {
+    Method dummyMethod = Method.fromJson(jsonDecode(dummyMethodData));
+    test('Has property mashTemp of type List<MashTemp>', () {
+      expect(dummyMethod.mashTemp.runtimeType, List<MashTemp>);
+    });
+    test('Has property fermentation of type Fermentation', () {
+      expect(dummyMethod.fermentation.runtimeType, Fermentation);
+    });
+    test('Has property twist of type String', () {
+      expect(dummyMethod.twist.runtimeType.toString(),
+          matches(RegExp(r'(String|Null)')));
+    });
+  });
+
+  group('BeerRecipe', () {
+    BeerRecipe dummyBeerRecipe =
+        BeerRecipe.fromJson(jsonDecode(dummyBeerRecipeData));
+
+    test('Has property id of type int.', () {
+      expect(dummyBeerRecipe.id.runtimeType, int);
+    });
+    test('Has property name of type String.', () {
+      expect(dummyBeerRecipe.name.runtimeType, String);
+    });
+    test('Has property tagline of type String.', () {
+      expect(dummyBeerRecipe.tagline.runtimeType, String);
+    });
+    test('Has property firstBrewed of type String.', () {
+      expect(dummyBeerRecipe.firstBrewed.runtimeType, String);
+    });
+    test('Has property description of type String.', () {
+      expect(dummyBeerRecipe.description.runtimeType, String);
+    });
+    test('Has property imageUrl of type String.', () {
+      expect(dummyBeerRecipe.imageUrl.runtimeType, String);
+    });
+    test('Has property abv of type double.', () {
+      expect(dummyBeerRecipe.abv.runtimeType, double);
+    });
+    test('Has property abv of type double.', () {
+      expect(dummyBeerRecipe.abv.runtimeType, double);
+    });
+    test('Has property ibu of type int.', () {
+      expect(dummyBeerRecipe.ibu.runtimeType, int);
+    });
+    test('Has property targetFg of type int.', () {
+      expect(dummyBeerRecipe.targetFg.runtimeType, int);
+    });
+    test('Has property targetOg of type int.', () {
+      expect(dummyBeerRecipe.targetOg.runtimeType, int);
+    });
+    test('Has property ebc of type int.', () {
+      expect(dummyBeerRecipe.ebc.runtimeType, int);
+    });
+    test('Has property srm of type int.', () {
+      expect(dummyBeerRecipe.srm.runtimeType, int);
+    });
+    test('Has property ph of type double.', () {
+      expect(dummyBeerRecipe.ph.runtimeType, double);
+    });
+    test('Has property attenuationLevel of type int.', () {
+      expect(dummyBeerRecipe.attenuationLevel.runtimeType, int);
+    });
+    test('Has property volume of type Volume.', () {
+      expect(dummyBeerRecipe.volume.runtimeType, Volume);
+    });
+    test('Has property boilVolume of type Volume.', () {
+      expect(dummyBeerRecipe.boilVolume.runtimeType, Volume);
+    });
+    test('Has property method of type Method.', () {
+      expect(dummyBeerRecipe.method.runtimeType, Method);
+    });
+    test('Has property ingredients of type Ingredients.', () {
+      expect(dummyBeerRecipe.ingredients.runtimeType, Ingredients);
+    });
+    test('Has property foodPairing of type List<String>.', () {
+      expect(dummyBeerRecipe.foodPairing.runtimeType, List<String>);
+    });
+    test('Has property brewersTips of type String.', () {
+      expect(dummyBeerRecipe.brewersTips.runtimeType, String);
+    });
+    test('Has property contributedBy of type String.', () {
+      expect(dummyBeerRecipe.contributedBy.runtimeType, String);
     });
   });
 }

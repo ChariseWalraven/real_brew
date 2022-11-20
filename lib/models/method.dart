@@ -13,8 +13,9 @@ class Method {
   });
 
   factory Method.fromJson(Map<String, dynamic> json) {
-    List<MashTemp> mashTemp = List.castFrom(json[
-        'mash_temp']); // I think this will create a list of mash temps, but I'm not sure...Will have to test
+    List mashTempJson = json['mash_temp'];
+    List<MashTemp> mashTemp =
+        mashTempJson.map((mTJson) => MashTemp.fromJson(mTJson)).toList();
 
     return Method(
       mashTemp: mashTemp,

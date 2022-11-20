@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:real_brew/models/ingredients.dart';
 import 'package:real_brew/models/method.dart';
 import 'package:real_brew/models/volume.dart';
@@ -54,24 +56,24 @@ class BeerRecipe {
       id: json['id'],
       name: json['name'],
       tagline: json['tagline'],
-      firstBrewed: json['firstBrewed'],
+      firstBrewed: json['first_brewed'],
       description: json['description'],
-      imageUrl: json['imageUrl'],
+      imageUrl: json['image_url'],
       abv: json['abv'],
       ibu: json['ibu'],
-      targetFg: json['targetFg'],
-      targetOg: json['targetOg'],
+      targetFg: json['target_fg'],
+      targetOg: json['target_og'],
       ebc: json['ebc'],
       srm: json['srm'],
       ph: json['ph'],
-      attenuationLevel: json['attenuationLevel'],
-      volume: json['volume'],
-      boilVolume: json['boilVolume'],
-      method: json['method'],
-      ingredients: json['ingredients'],
-      foodPairing: json['foodPairing'],
-      brewersTips: json['brewersTips'],
-      contributedBy: json['contributedBy'],
+      attenuationLevel: json['attenuation_level'],
+      volume: Volume.fromJson(json['volume']),
+      boilVolume: Volume.fromJson(json['boil_volume']),
+      method: Method.fromJson(json['method']),
+      ingredients: Ingredients.fromJson(json['ingredients']),
+      foodPairing: List<String>.from(json['food_pairing']),
+      brewersTips: json['brewers_tips'],
+      contributedBy: json['contributed_by'],
     );
   }
 
