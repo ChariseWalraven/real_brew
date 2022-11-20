@@ -5,6 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:real_brew/models/amount.dart';
 import 'package:real_brew/models/beer_recipe.dart';
 import 'package:real_brew/models/hop.dart';
+import 'package:real_brew/models/ingredients.dart';
 import 'package:real_brew/models/volume.dart';
 
 import 'package:real_brew/services/beer_api.mocks.dart';
@@ -65,6 +66,20 @@ void main() async {
       });
       test('Has property attribute of type String.', () {
         expect(dummyHops.attribute.runtimeType, String);
+      });
+    });
+
+    group('Ingredients', () {
+      Ingredients dummyIngredients =
+          Ingredients.fromJson(jsonDecode(dummyIngredientsData));
+      test('Has property malt of type List<Malt>.', () {
+        expect(dummyIngredients.malt.runtimeType, List<Malt>);
+      });
+      test('Has property hops of type List<Hops>.', () {
+        expect(dummyIngredients.hops.runtimeType, List<Hop>);
+      });
+      test('Has property yeast of type String.', () {
+        expect(dummyIngredients.yeast.runtimeType, String);
       });
     });
 
