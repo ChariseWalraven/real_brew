@@ -1,12 +1,12 @@
 name: real_brew
 description: A new Flutter project.
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.4 <3.0.0'
+  sdk: ">=2.18.4 <3.0.0"
 
 dependencies:
   flutter:
@@ -18,7 +18,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
   mockito: ^5.3.2
-
+  build_runner: ^2.3.2
 
 flutter:
   uses-material-design: true
