@@ -15,7 +15,7 @@ void main() {
         });
       });
       group('.getBeers', () {
-        when(beerAPI.getBeers()).thenReturn();
+        when(beerAPI.getBeers()).thenReturn(List.filled(25, ''));
         var getBeersResult = beerAPI.getBeers();
         test('Should return a List', () {
           expect(getBeersResult, isList);
