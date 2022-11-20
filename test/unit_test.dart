@@ -1,6 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:real_brew/services/beer_api.dart';
 
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+
+// generate mocks class
+@GenerateNiceMocks([MockSpec<BeerAPI>()])
+// import 'beerapi.mocks.dart';
+
 void main() {
   group('Services', () {
     group('BeerAPI', () {
