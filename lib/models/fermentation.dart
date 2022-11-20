@@ -8,7 +8,9 @@ class Fermentation {
   });
 
   factory Fermentation.fromJson(Map<String, dynamic> json) {
-    return Fermentation(temp: json['temp']);
+    return Fermentation(
+      temp: Volume.fromJson(json['temp']),
+    );
   }
 
   Map<String, dynamic> toJson() {

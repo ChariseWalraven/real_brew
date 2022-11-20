@@ -9,8 +9,9 @@ class Amount {
 
   factory Amount.fromJson(Map<String, dynamic> json) {
     return Amount(
-      unit: json['unit'],
-      value: json['value'],
+      unit: json['unit'] as String,
+      value: double.parse(json['value']
+          .toString()), // prevents the stray int value from causing an error
     );
   }
 

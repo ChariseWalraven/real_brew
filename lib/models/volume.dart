@@ -9,8 +9,8 @@ class Volume {
 
   factory Volume.fromJson(Map<String, dynamic> json) {
     return Volume(
-      unit: json['unit'],
-      value: json['value'],
+      unit: json['unit'] as String,
+      value: json['value'] as int,
     );
   }
 

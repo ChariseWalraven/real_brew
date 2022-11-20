@@ -11,7 +11,7 @@ class Malt {
 
   factory Malt.fromJson(Map<String, dynamic> json) {
     return Malt(
-      amount: json['amount'],
+      amount: Amount.fromJson(json['amount']),
       name: json['name'],
     );
   }

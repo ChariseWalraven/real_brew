@@ -4,8 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:real_brew/models/amount.dart';
 import 'package:real_brew/models/beer_recipe.dart';
+import 'package:real_brew/models/fermentation.dart';
 import 'package:real_brew/models/hop.dart';
 import 'package:real_brew/models/ingredients.dart';
+import 'package:real_brew/models/malt.dart';
 import 'package:real_brew/models/volume.dart';
 
 import 'package:real_brew/services/beer_api.mocks.dart';
@@ -23,13 +25,13 @@ void main() async {
       if (kMockBeerAPI) {
         beerAPI = MockBeerAPI();
 
-        // TODO: fix
-        // when(beerAPI.getBeers()).thenReturn(
-        //   Future.delayed(
-        //     const Duration(milliseconds: 5),
-        //     () => List.filled(25, BeerRecipe.fromJson(dummyBeerRecipeJson)),
-        //   ),
-        // );
+        when(beerAPI.getBeers()).thenReturn(
+          Future.delayed(
+            const Duration(milliseconds: 5),
+            () => List.filled(
+                25, BeerRecipe.fromJson(jsonDecode(dummyBeerRecipeData))),
+          ),
+        );
       }
       group('.getBeers', () {
         test('Should return a List', () async {
@@ -92,6 +94,14 @@ void main() async {
 
       test('Has a unit of type String', () {
         expect(dummyVolume.unit.runtimeType, String);
+      });
+    });
+
+    group('Fermentation', () {
+      Fermentation dummyFermentation =
+          Fermentation.fromJson(jsonDecode(dummyFermentationData));
+      test('Has property volume of type Volume', () {
+        expect(dummyFermentation.temp.runtimeType, Volume);
       });
     });
   });
