@@ -9,18 +9,10 @@ import 'package:real_brew/models/volume.dart';
 import 'package:real_brew/services/beer_api.mocks.dart';
 import 'package:real_brew/services/beer_api.dart';
 
+import 'dummy_data/dummy_data.dart';
 import 'test.settings.dart';
 
 void main() async {
-  // if I don't use this, the dummy data isn't loaded.
-  // I'm sure there's a better way, but I don't know it yet.
-  TestWidgetsFlutterBinding.ensureInitialized();
-
-  String dummyAmountFile =
-      await rootBundle.loadString('assets/dummy_data/dummyAmount.json');
-  String dummyVolumeFile =
-      await rootBundle.loadString('assets/dummy_data/dummyVolume.json');
-
   group('Services', () {
     group('BeerAPI', () {
       BeerAPI beerAPI = BeerAPI();
@@ -50,7 +42,7 @@ void main() async {
   });
   group('Models', () {
     group('Amount', () {
-      Amount dummyAmount = Amount.fromJson(jsonDecode(dummyAmountFile));
+      Amount dummyAmount = Amount.fromJson(jsonDecode(dummyAmountData));
       test('Has a value of type double', () {
         expect(dummyAmount.value.runtimeType, double);
       });
@@ -66,7 +58,7 @@ void main() async {
     group('Ingredients', () {});
 
     group('Volume', () {
-      Volume dummyVolume = Volume.fromJson(jsonDecode(dummyVolumeFile));
+      Volume dummyVolume = Volume.fromJson(jsonDecode(dummyVolumeData));
 
       test('Has a value of type double', () {
         expect(dummyVolume.value.runtimeType, int);
