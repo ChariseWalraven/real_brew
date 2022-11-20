@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Fuggles",
+    "amount": { "value": 25, "unit": "grams" },
+    "add": "start",
+    "attribute": "bitter"
+  },
+  {
+    "name": "First Gold",
+    "amount": { "value": 25, "unit": "grams" },
+    "add": "start",
+    "attribute": "bitter"
+  },
+  {
+    "name": "Fuggles",
+    "amount": { "value": 37.5, "unit": "grams" },
+    "add": "middle",
+    "attribute": "flavour"
+  },
+  {
+    "name": "First Gold",
+    "amount": { "value": 37.5, "unit": "grams" },
+    "add": "middle",
+    "attribute": "flavour"
+  },
+  {
+    "name": "Cascade",
+    "amount": { "value": 37.5, "unit": "grams" },
+    "add": "end",
+    "attribute": "flavour"
+  }
+]

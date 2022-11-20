@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Maris Otter Extra Pale",
+    "amount": { "value": 3.3, "unit": "kilograms" }
+  },
+  { "name": "Caramalt", "amount": { "value": 0.2, "unit": "kilograms" } },
+  { "name": "Munich", "amount": { "value": 0.4, "unit": "kilograms" } }
+]
