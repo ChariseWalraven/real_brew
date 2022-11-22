@@ -15,9 +15,9 @@ class BeersList extends ConsumerWidget {
       loading: () => const CircularProgressIndicator(),
       error: (error, stackTrace) {
         debugPrintStack(stackTrace: stackTrace, label: error.toString());
-        return Text(
-          style: const TextStyle(color: Colors.red),
-          "Oh no! Technical difficulties at the brewery: $error",
+        return const Text(
+          style: TextStyle(color: Colors.red),
+          "Oh no! Technical difficulties at the brewery! Please try again later",
         );
       },
       data: (beers) {
