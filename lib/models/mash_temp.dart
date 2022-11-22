@@ -12,7 +12,7 @@ class MashTemp {
   factory MashTemp.fromJson(Map<String, dynamic> json) {
     return MashTemp(
       temp: Volume.fromJson(json['temp']),
-      duration: json['duration'],
+      duration: json['duration'] ?? 0,
     );
   }
 

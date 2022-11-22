@@ -12,13 +12,13 @@ class BeerRecipe {
   final String description;
   final String imageUrl;
   final double abv;
-  final int ibu;
-  final int targetFg;
-  final int targetOg;
-  final int ebc;
-  final int srm;
+  final double ibu;
+  final double targetFg;
+  final double targetOg;
+  final double ebc;
+  final double srm;
   final double ph;
-  final int attenuationLevel;
+  final double attenuationLevel;
   final Volume volume;
   final Volume boilVolume;
   final Method method;
@@ -52,6 +52,16 @@ class BeerRecipe {
   });
 
   factory BeerRecipe.fromJson(Map<String, dynamic> json) {
+    double abv = double.parse((json['abv'] ?? 0.0).toString());
+    double ibu = double.parse((json['ibu'] ?? 0.0).toString());
+    double targetFg = double.parse((json['targetFg'] ?? 0.0).toString());
+    double targetOg = double.parse((json['targetOg'] ?? 0.0).toString());
+    double ebc = double.parse((json['ebc'] ?? 0.0).toString());
+    double srm = double.parse((json['srm'] ?? 0.0).toString());
+    double ph = double.parse((json['ph'] ?? 0.0).toString());
+    double attenuationLevel =
+        double.parse((json['attenuationLevel'] ?? 0.0).toString());
+
     return BeerRecipe(
       id: json['id'],
       name: json['name'],
@@ -59,14 +69,14 @@ class BeerRecipe {
       firstBrewed: json['first_brewed'],
       description: json['description'],
       imageUrl: json['image_url'],
-      abv: json['abv'],
-      ibu: json['ibu'],
-      targetFg: json['target_fg'],
-      targetOg: json['target_og'],
-      ebc: json['ebc'],
-      srm: json['srm'],
-      ph: json['ph'],
-      attenuationLevel: json['attenuation_level'],
+      abv: abv,
+      ibu: ibu,
+      targetFg: targetFg,
+      targetOg: targetOg,
+      ebc: ebc,
+      srm: srm,
+      ph: ph,
+      attenuationLevel: attenuationLevel,
       volume: Volume.fromJson(json['volume']),
       boilVolume: Volume.fromJson(json['boil_volume']),
       method: Method.fromJson(json['method']),
