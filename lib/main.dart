@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:real_brew/models/beer_recipe.dart';
 import 'package:real_brew/services/beer_api.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,14 +30,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Text(
-            'Choose your beer',
-          ),
-          BeersList(),
-        ],
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text(
+              'Choose your beer',
+            ),
+            // BeersList(),
+          ],
+        ),
       ),
     );
   }
@@ -56,7 +59,7 @@ class BeersList extends StatelessWidget {
               itemCount: beers.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-              BeerRecipe beer = beers[index];
+                BeerRecipe beer = beers[index];
                 return Text(beer.name);
               },
             );
