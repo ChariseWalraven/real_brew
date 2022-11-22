@@ -73,12 +73,10 @@ var dummyMaltData = jsonEncode([
     "amount": {"value": 0.4, "unit": "kilograms"}
   }
 ]);
-var dummyMashTempData = jsonEncode([
-  {
-    "temp": {"value": 64, "unit": "celsius"},
-    "duration": 75
-  }
-]);
+var dummyMashTempData = jsonEncode({
+  "temp": {"value": 64, "unit": "celsius"},
+  "duration": 75
+});
 var dummyMethodData = jsonEncode({
   "mash_temp": [
     {
