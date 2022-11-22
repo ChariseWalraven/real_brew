@@ -109,7 +109,15 @@ void main() async {
   });
 
 // TODO: Mash Temp test
-  group('MashTemp', () {});
+  group('MashTemp', () {
+    MashTemp dummyMashTemp = MashTemp.fromJson(jsonDecode(dummyMashTempData));
+    test('Has property mashTemp of type Volume', () {
+      expect(dummyMashTemp.temp.runtimeType, Volume);
+    });
+    test('Has property duration of type int', () {
+      expect(dummyMashTemp.duration.runtimeType, int);
+    });
+  });
 
   group('Method', () {
     Method dummyMethod = Method.fromJson(jsonDecode(dummyMethodData));
@@ -120,8 +128,12 @@ void main() async {
       expect(dummyMethod.fermentation.runtimeType, Fermentation);
     });
     test('Has property twist of type String', () {
-      expect(dummyMethod.twist.runtimeType.toString(),
-          matches(RegExp(r'(String|Null)')));
+      expect(
+        dummyMethod.twist.runtimeType.toString(),
+        matches(
+          RegExp(r'(String|Null)'),
+        ),
+      );
     });
   });
 
