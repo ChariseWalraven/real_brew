@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:real_brew/models/beer_recipe.dart';
 import 'package:real_brew/services/beer_api.dart';
 
 void main() {
@@ -50,11 +51,13 @@ class BeersList extends StatelessWidget {
         future: BeerAPI().getBeers(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            final List<BeerRecipe> beers = snapshot.data!;
             return ListView.builder(
-              itemCount: snapshot.data!.length,
+              itemCount: beers.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return Text("Beer number ${index + 1}");
+              BeerRecipe beer = beers[index];
+                return Text(beer.name);
               },
             );
           }
