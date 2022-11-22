@@ -1,0 +1,5 @@
+{
+  "mash_temp": [{ "temp": { "value": 64, "unit": "celsius" }, "duration": 75 }],
+  "fermentation": { "temp": { "value": 19, "unit": "celsius" } },
+  "twist": null
+}

@@ -6,6 +6,7 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:real_brew/models/beer_recipe.dart' as _i4;
 import 'package:real_brew/services/beer_api.dart' as _i2;
 
 // ignore_for_file: type=lint
@@ -24,21 +25,13 @@ import 'package:real_brew/services/beer_api.dart' as _i2;
 /// See the documentation for Mockito's code generation for more information.
 class MockBeerAPI extends _i1.Mock implements _i2.BeerAPI {
   @override
-  _i3.Future<List<dynamic>> getBeers() => (super.noSuchMethod(
+  _i3.Future<List<_i4.BeerRecipe>> getBeers() => (super.noSuchMethod(
         Invocation.method(
           #getBeers,
           [],
         ),
-        returnValue: _i3.Future<List<dynamic>>.value(<dynamic>[]),
-        returnValueForMissingStub: _i3.Future<List<dynamic>>.value(<dynamic>[]),
-      ) as _i3.Future<List<dynamic>>);
-  @override
-  int ping() => (super.noSuchMethod(
-        Invocation.method(
-          #ping,
-          [],
-        ),
-        returnValue: 0,
-        returnValueForMissingStub: 0,
-      ) as int);
+        returnValue: _i3.Future<List<_i4.BeerRecipe>>.value(<_i4.BeerRecipe>[]),
+        returnValueForMissingStub:
+            _i3.Future<List<_i4.BeerRecipe>>.value(<_i4.BeerRecipe>[]),
+      ) as _i3.Future<List<_i4.BeerRecipe>>);
 }
