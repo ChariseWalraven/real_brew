@@ -163,26 +163,26 @@ void main() async {
       test('Has property abv of type double.', () {
         expect(dummyBeerRecipe.abv.runtimeType, double);
       });
-      test('Has property ibu of type int.', () {
-        expect(dummyBeerRecipe.ibu.runtimeType, int);
+      test('Has property ibu of type double.', () {
+        expect(dummyBeerRecipe.ibu.runtimeType, double);
       });
-      test('Has property targetFg of type int.', () {
-        expect(dummyBeerRecipe.targetFg.runtimeType, int);
+      test('Has property targetFg of type double.', () {
+        expect(dummyBeerRecipe.targetFg.runtimeType, double);
       });
-      test('Has property targetOg of type int.', () {
-        expect(dummyBeerRecipe.targetOg.runtimeType, int);
+      test('Has property targetOg of type double.', () {
+        expect(dummyBeerRecipe.targetOg.runtimeType, double);
       });
-      test('Has property ebc of type int.', () {
-        expect(dummyBeerRecipe.ebc.runtimeType, int);
+      test('Has property ebc of type double.', () {
+        expect(dummyBeerRecipe.ebc.runtimeType, double);
       });
-      test('Has property srm of type int.', () {
-        expect(dummyBeerRecipe.srm.runtimeType, int);
+      test('Has property srm of type double.', () {
+        expect(dummyBeerRecipe.srm.runtimeType, double);
       });
       test('Has property ph of type double.', () {
         expect(dummyBeerRecipe.ph.runtimeType, double);
       });
-      test('Has property attenuationLevel of type int.', () {
-        expect(dummyBeerRecipe.attenuationLevel.runtimeType, int);
+      test('Has property attenuationLevel of type double.', () {
+        expect(dummyBeerRecipe.attenuationLevel.runtimeType, double);
       });
       test('Has property volume of type Volume.', () {
         expect(dummyBeerRecipe.volume.runtimeType, Volume);
