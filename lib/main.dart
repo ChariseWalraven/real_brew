@@ -46,6 +46,19 @@ class BeersList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return FutureBuilder(
+        future: BeerAPI().getBeers(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return Text("Beer number ${index + 1}");
+              },
+            );
+          }
+          return Container();
+        });
   }
 }
