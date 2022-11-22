@@ -9,7 +9,7 @@ import 'package:real_brew/models/beer_recipe.dart';
 // generate mocks class
 @GenerateNiceMocks([MockSpec<BeerAPI>()])
 class BeerAPI {
-  final String _baseUrlString = 'https://api.punkapi.com/v2sadsadsada';
+  final String _baseUrlString = 'https://api.punkapi.com/v2';
 
   Future<List<BeerRecipe>> getBeers() async {
     Uri url = Uri.parse("$_baseUrlString/beers");
