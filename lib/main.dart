@@ -31,15 +31,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Text(
-            'Choose your beer',
-          ),
-          ChuckJoke(),
-          BeersList(),
-        ],
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text(
+              'Choose your beer',
+            ),
+            ChuckJoke(),
+            ChuckJokes(),
+            SpinnerThenChuckJoke(),
+            // BeersList(),
+          ],
+        ),
       ),
     );
   }
@@ -59,7 +63,7 @@ class BeersList extends StatelessWidget {
               itemCount: beers.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-              BeerRecipe beer = beers[index];
+                BeerRecipe beer = beers[index];
                 return Text(beer.name);
               },
             );
