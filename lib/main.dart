@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:real_brew/models/beer_recipe.dart';
 import 'package:real_brew/services/beer_api.dart';
+import 'package:real_brew/ui/widgets/riverpod_test.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -35,6 +37,7 @@ class HomeScreen extends StatelessWidget {
           Text(
             'Choose your beer',
           ),
+          ChuckJoke(),
           BeersList(),
         ],
       ),
