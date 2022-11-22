@@ -37,34 +37,10 @@ class HomeScreen extends StatelessWidget {
             Text(
               'Choose your beer',
             ),
-            // BeersList(),
+            BeersList(),
           ],
         ),
       ),
     );
-  }
-}
-
-class BeersList extends StatelessWidget {
-  const BeersList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: BeerAPI().getBeers(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final List<BeerRecipe> beers = snapshot.data!;
-            return ListView.builder(
-              itemCount: beers.length,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                BeerRecipe beer = beers[index];
-                return Text(beer.name);
-              },
-            );
-          }
-          return Container();
-        });
   }
 }
