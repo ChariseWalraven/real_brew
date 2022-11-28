@@ -15,7 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Real Brew',
       theme: ThemeData(
+        brightness: Brightness.dark,
         primarySwatch: Colors.blue,
+        useMaterial3: true,
+        textTheme: Typography.dense2021,
       ),
       home: const HomeScreen(),
     );
@@ -27,17 +30,30 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text(
-              'Choose your beer',
-            ),
-            BeersList(),
-          ],
+        child: SizedBox(
+          width: double.infinity,
+          height: screenSize.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: double.infinity,
+                child: Text(
+                  'Choose your beer',
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
+              ),
+              SizedBox(
+                height: (screenSize.height / 4) * 3.2,
+                child: const BeersList(),
+              ),
+            ],
+          ),
         ),
       ),
     );
