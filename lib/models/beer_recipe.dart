@@ -1,8 +1,7 @@
-import 'dart:convert';
-
 import 'package:real_brew/models/ingredients.dart';
 import 'package:real_brew/models/method.dart';
 import 'package:real_brew/models/volume.dart';
+import 'package:real_brew/util/functions.dart';
 
 class BeerRecipe {
   final int id;
@@ -11,6 +10,7 @@ class BeerRecipe {
   final String firstBrewed;
   final String description;
   final String imageUrl;
+  final String prettyImagePath;
   final double abv;
   final double ibu;
   final double targetFg;
@@ -34,6 +34,7 @@ class BeerRecipe {
     required this.firstBrewed,
     required this.description,
     required this.imageUrl,
+    required this.prettyImagePath,
     required this.abv,
     required this.ibu,
     required this.targetFg,
@@ -62,6 +63,8 @@ class BeerRecipe {
     double attenuationLevel =
         double.parse((json['attenuationLevel'] ?? 0.0).toString());
 
+    String prettyImagePath = getRandomPrettyImagePath();
+
     return BeerRecipe(
       id: json['id'],
       name: json['name'],
@@ -69,6 +72,7 @@ class BeerRecipe {
       firstBrewed: json['first_brewed'],
       description: json['description'],
       imageUrl: json['image_url'],
+      prettyImagePath: prettyImagePath,
       abv: abv,
       ibu: ibu,
       targetFg: targetFg,

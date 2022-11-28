@@ -9,23 +9,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:real_brew/main.dart';
+import 'package:real_brew/ui/widgets/beers_widgets.dart';
 
 void main() {
-  // TODO: widget tests
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  group('Home Screen', () {
+    testWidgets('Has a Text with "Choose your beer", and a BeersList',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+      expect(find.byType(Text), findsOneWidget);
+      expect(find.text('Choose your beer'), findsOneWidget);
+      expect(find.byType(BeersList), findsOneWidget);
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Can't quite figure this out and don't really have the time for it anymore
+    // testWidgets('BeersList contains a ListView', (WidgetTester tester) async {
+    //   await tester.pumpWidget(SizedBox(height: 500, width: 250 ,child: Column(
+    //     children: const [
+    //       BeersList(),
+    //     ],
+    //   )));
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    //   expect(find.byType(ListView), findsOneWidget);
+    // });
   });
 }
