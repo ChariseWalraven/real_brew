@@ -22,7 +22,7 @@ class BeersList extends ConsumerWidget {
       },
       data: (beers) {
         return SizedBox(
-          width: MediaQuery.of(context).size.width / 2,
+          width: MediaQuery.of(context).size.width / 1.75,
           child: ListView.builder(
             itemCount: beers.length,
             shrinkWrap: true,
@@ -58,9 +58,10 @@ class BeersListItem extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        image: const DecorationImage(
+        image: DecorationImage(
+          isAntiAlias: true,
           fit: BoxFit.cover,
-          image: AssetImage('assets/images/beer_placeholder.jpg'),
+          image: AssetImage(beer.prettyImagePath),
         ),
       ),
       child: Container(
