@@ -30,16 +30,20 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
               'Choose your beer',
             ),
-            BeersList(),
+            SizedBox(
+              height: (screenSize.height / 4) * 3,
+              child: const BeersList(),
+            ),
           ],
         ),
       ),
