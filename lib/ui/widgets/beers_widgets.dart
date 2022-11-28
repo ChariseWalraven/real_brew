@@ -21,13 +21,19 @@ class BeersList extends ConsumerWidget {
         );
       },
       data: (beers) {
-        return ListView.builder(
-          itemCount: beers.length,
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            BeerRecipe beer = beers[index];
-            return BeersListItem(beer: beer);
-          },
+        return SizedBox(
+          width: MediaQuery.of(context).size.width / 2,
+          child: ListView.builder(
+            itemCount: beers.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              BeerRecipe beer = beers[index];
+              return Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                child: BeersListItem(beer: beer),
+              );
+            },
+          ),
         );
       },
     );
@@ -46,21 +52,39 @@ class BeersListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var theme = Theme.of(context);
-    return SizedBox(
+    return Container(
+      height: screenSize.height / 2.5,
+      alignment: Alignment.topCenter,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        image: const DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage('assets/images/beer_placeholder.jpg'),
+        ),
+      ),
       child: Container(
-        height: screenSize.height / 2.5,
-        width: screenSize.width / 2,
-        decoration: BoxDecoration(
-            image: DecorationImage(image: NetworkImage(beer.imageUrl))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(style: theme.textTheme.bodyMedium, beer.name),
-            const IconButton(
-              onPressed: unimplimentedOnPress,
-              icon: Icon(Icons.favorite_border),
-            ),
-          ],
+        padding: const EdgeInsets.only(bottom: 40),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.black,
+              Colors.transparent,
+            ],
+          ),
+        ),
+        child: ListTile(
+          // contentPadding: const EdgeInsets.symmetric(vertical: 15),
+          title: Text(
+              style: theme.textTheme.bodyMedium,
+              beer.name,
+              overflow: TextOverflow.ellipsis),
+          trailing: const IconButton(
+            onPressed: unimplimentedOnPress,
+            icon: Icon(Icons.favorite_border),
+          ),
         ),
       ),
     );
