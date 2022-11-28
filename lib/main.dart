@@ -34,17 +34,26 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              'Choose your beer',
-            ),
-            SizedBox(
-              height: (screenSize.height / 4) * 3,
-              child: const BeersList(),
-            ),
-          ],
+        child: SizedBox(
+          width: double.infinity,
+          height: screenSize.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: double.infinity,
+                child: Text(
+                  'Choose your beer',
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
+              ),
+              SizedBox(
+                height: (screenSize.height / 4) * 3.2,
+                child: const BeersList(),
+              ),
+            ],
+          ),
         ),
       ),
     );
