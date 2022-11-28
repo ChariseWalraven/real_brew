@@ -33,7 +33,7 @@ class BeersList extends ConsumerWidget {
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 child: GestureDetector(
                     onTap: () {
-                      ref.read(selectedBeerProvider.notifier).state = beer.id;
+                      ref.read(selectedBeerProvider.notifier).state = beer;
                       context.go('/detail');
                     },
                     child: BeersListItem(beer: beer)),
