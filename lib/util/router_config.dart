@@ -9,10 +9,12 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) => const HomeScreen(),
-    ),
-    GoRoute(
-      path: '/detail',
-      builder: (context, state) => const DetailScreen(),
+      routes: [
+        GoRoute(
+          path: 'detail',
+          builder: (context, state) => const DetailScreen(),
+        ),
+      ],
     ),
   ],
 );
