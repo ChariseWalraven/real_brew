@@ -4,6 +4,7 @@ import 'package:real_brew/ui/screens/home_screen.dart';
 
 // GoRouter configuration
 final routerConfig = GoRouter(
+  debugLogDiagnostics: true,
   routes: [
     GoRoute(
       path: '/',

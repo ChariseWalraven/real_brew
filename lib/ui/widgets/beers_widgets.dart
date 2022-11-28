@@ -22,21 +22,23 @@ class BeersList extends ConsumerWidget {
         );
       },
       data: (beers) {
-        return GestureDetector(
-          onTap: () => context.go('/detail'),
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width / 1.75,
-            child: ListView.builder(
-              itemCount: beers.length,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                BeerRecipe beer = beers[index];
-                return Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  child: BeersListItem(beer: beer),
-                );
-              },
-            ),
+        return SizedBox(
+          width: MediaQuery.of(context).size.width / 1.75,
+          child: ListView.builder(
+            itemCount: beers.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              BeerRecipe beer = beers[index];
+              return Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                child: GestureDetector(
+                    onTap: () {
+                      ref.read(selectedBeerProvider.notifier).state = beer.id;
+                      context.go('/detail');
+                    },
+                    child: BeersListItem(beer: beer)),
+              );
+            },
           ),
         );
       },
