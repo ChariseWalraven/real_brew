@@ -21,7 +21,6 @@ class BeerAPI {
 
     for (var beerJson in beersJson) {
       BeerRecipe beerRecipe = BeerRecipe.fromJson(beerJson);
-      print(beerRecipe);
 
       beers.add(beerRecipe);
     }
