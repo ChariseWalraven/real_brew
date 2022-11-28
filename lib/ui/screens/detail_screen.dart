@@ -12,8 +12,9 @@ class DetailScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedBeerProviderRef = ref.watch(selectedBeerProvider);
     return RealBrewScaffold(
-      body: Text(
-          "This is the detail screen. The given beer id is $selectedBeerProviderRef"),
+      body: Text(selectedBeerProviderRef != null
+          ? "This is the detail screen. The given beer id is ${selectedBeerProviderRef.id}"
+          : "This is the detail screen. No beer id was given"),
     );
   }
 }
