@@ -15,7 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Real Brew',
       theme: ThemeData(
+        brightness: Brightness.dark,
         primarySwatch: Colors.blue,
+        useMaterial3: true,
+        textTheme: Typography.dense2021,
       ),
       home: const HomeScreen(),
     );
