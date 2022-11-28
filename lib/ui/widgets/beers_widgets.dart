@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:real_brew/models/beer_recipe.dart';
 import 'package:real_brew/state/beers.dart';
+import 'package:real_brew/ui/screens/detail_screen.dart';
 import 'package:real_brew/util/functions.dart';
 
 class BeersList extends ConsumerWidget {
@@ -34,7 +34,8 @@ class BeersList extends ConsumerWidget {
                 child: GestureDetector(
                     onTap: () {
                       ref.read(selectedBeerProvider.notifier).state = beer;
-                      context.go('/detail');
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const DetailScreen()));
                     },
                     child: BeersListItem(beer: beer)),
               );

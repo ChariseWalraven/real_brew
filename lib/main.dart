@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:real_brew/util/router_config.dart';
+import 'package:real_brew/ui/screens/home_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -12,8 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: routerConfig,
+    return MaterialApp(
       title: 'Real Brew',
       theme: ThemeData(
         brightness: Brightness.dark,
@@ -21,6 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         textTheme: Typography.dense2021,
       ),
+      home: const HomeScreen(),
     );
   }
 }
