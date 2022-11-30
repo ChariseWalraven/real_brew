@@ -4,7 +4,6 @@ import 'package:real_brew/models/beer_recipe.dart';
 import 'package:real_brew/state/beers.dart';
 import 'package:real_brew/ui/screens/detail/detail_screen.dart';
 import 'package:real_brew/util/constants.dart';
-import 'package:real_brew/util/functions.dart';
 
 class BeersList extends ConsumerWidget {
   const BeersList({super.key});
@@ -52,7 +51,7 @@ class BeersList extends ConsumerWidget {
   }
 }
 
-class BeersListItem extends StatelessWidget {
+class BeersListItem extends ConsumerWidget {
   const BeersListItem({
     Key? key,
     required this.beer,
@@ -61,9 +60,8 @@ class BeersListItem extends StatelessWidget {
   final BeerRecipe beer;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     var screenSize = MediaQuery.of(context).size;
-    var theme = Theme.of(context);
     return Container(
       height: screenSize.height / 2.5,
       alignment: Alignment.topCenter,
@@ -90,14 +88,12 @@ class BeersListItem extends StatelessWidget {
         ),
         child: ListTile(
           title: Text(
-              style: theme.textTheme.bodyMedium,
-              beer.name,
+          style: Theme.of(context).textTheme.bodyMedium,
+          widget.beer.name,
               overflow: TextOverflow.ellipsis),
-          trailing: const IconButton(
-            onPressed: unimplimentedOnPress,
-            icon: Icon(Icons.favorite_border),
-          ),
-        ),
+      trailing: IconButton(
+        onPressed: () => handleFavouriteTap(widget.beer, ref),
+        icon: favouriteIcon,
       ),
     );
   }
