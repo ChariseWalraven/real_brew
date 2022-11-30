@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:real_brew/models/beer_recipe.dart';
+import 'package:real_brew/models/models.dart' as m;
 import 'package:real_brew/state/beers.dart';
 import 'package:real_brew/ui/widgets/beers_widgets.dart';
 import 'package:real_brew/util/colours.dart';
@@ -29,7 +29,7 @@ class _DetailScreenContents extends StatelessWidget {
     required this.beerRecipe,
   }) : super(key: key);
 
-  final BeerRecipe beerRecipe;
+  final m.BeerRecipe beerRecipe;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,7 @@ class BeerRecipeDetail extends StatelessWidget {
   }) : super(key: key);
 
   final Size size;
-  final BeerRecipe beerRecipe;
+  final m.BeerRecipe beerRecipe;
   final TextTheme textTheme;
 
   @override
