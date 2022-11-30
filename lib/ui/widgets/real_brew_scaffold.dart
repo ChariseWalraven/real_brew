@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:real_brew/ui/widgets/bottom_bar.dart';
 
 class RealBrewScaffold extends StatelessWidget {
   const RealBrewScaffold({
@@ -11,10 +12,11 @@ class RealBrewScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      // appBar: AppBar(),
       body: SafeArea(
         child: body,
       ),
+      bottomNavigationBar: const RealBrewBottomBar(),
     );
   }
 }

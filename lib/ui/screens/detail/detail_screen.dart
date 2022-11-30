@@ -18,12 +18,13 @@ class DetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var selectedBeerProviderRef = ref.watch(selectedBeerProvider);
-
-    Widget content = selectedBeerProviderRef != null
-        ? _DetailScreenContents(beerRecipe: selectedBeerProviderRef)
-        : const _NoBeerRecipeProvided();
-    return RealBrewScaffold(
-      body: content,
+    return Scaffold(
+      appBar: AppBar(),
+      body: SafeArea(
+        child: selectedBeerProviderRef != null
+            ? _DetailScreenContents(beerRecipe: selectedBeerProviderRef)
+            : const _NoBeerRecipeProvided(),
+      ),
     );
   }
 }
@@ -129,4 +130,3 @@ class _NoBeerRecipeProvided extends StatelessWidget {
     return Container();
   }
 }
-
