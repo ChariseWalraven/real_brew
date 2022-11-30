@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:real_brew/models/beer_recipe.dart';
 import 'package:real_brew/state/beers.dart';
+import 'package:real_brew/ui/screens/detail/detail_screen.dart';
 import 'package:real_brew/util/functions.dart';
 
 class BeersList extends ConsumerWidget {
@@ -30,7 +31,13 @@ class BeersList extends ConsumerWidget {
               BeerRecipe beer = beers[index];
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 10),
-                child: BeersListItem(beer: beer),
+                child: GestureDetector(
+                    onTap: () {
+                      ref.read(selectedBeerProvider.notifier).state = beer;
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const DetailScreen()));
+                    },
+                    child: BeersListItem(beer: beer)),
               );
             },
           ),
@@ -39,6 +46,7 @@ class BeersList extends ConsumerWidget {
     );
   }
 }
+
 
 class BeersListItem extends StatelessWidget {
   const BeersListItem({
