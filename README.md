@@ -1,16 +1,25 @@
 # real_brew
 
-A new Flutter project.
+Final project for FlutterDevCamp 2022
 
-## Getting Started
+The purpose of this app is to be a reference to help people who like brewing beers.
 
-This project is a starting point for a Flutter application.
+I made this app in a space of about 4 or 5 days due to schedule constraints.
 
-A few resources to get you started if this is your first Flutter project:
+Hopefully, this proves I have an understanding of the following topics:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Basic UI
+- State management with Riverpod (first time using)
+- API integration
+- Testing (unit)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Some things I would like to improve on in future that I noticed I was having trouble with in this app:
+
+- More complex state management
+  - Specifically I wanted to get an initial list of favourite beers from shared prefs or somewhere else and set that as the initial state of the favourites list, but didn't quite manage it.
+- Refresh favourites automatically when a favourite is removed from the favourites screen
+  - Somehow removing favourites doesn't trigger a build. I'm wondering if it's because I am using a ConsumerStatefulWidget to keep track of the UI for the favourites button and this is somehow interfering in the rest of he app?
+- Animations
+  - I was hoping to add some animations but decided to focus on getting the app working, and then my time ran out. Maybe it would be better to practice animations separately next time, then I don't have to worry about functionality.
+- Widget tests
+  - I ran into trouble with Widget testing so I left it out this time.
