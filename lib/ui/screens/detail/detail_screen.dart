@@ -6,6 +6,7 @@ import 'package:real_brew/ui/screens/detail/widgets.dart';
 import 'package:real_brew/ui/widgets/beers_widgets.dart';
 import 'package:real_brew/util/colours.dart';
 
+import 'ingredients.dart';
 import 'method.dart';
 
 class DetailScreen extends ConsumerWidget {
@@ -127,3 +128,4 @@ class _NoBeerRecipeProvided extends StatelessWidget {
     return Container();
   }
 }
+
