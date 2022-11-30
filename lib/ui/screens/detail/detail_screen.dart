@@ -109,12 +109,28 @@ class BeerRecipeDetail extends StatelessWidget {
               Method(method: beerRecipe.method),
               BrewersTips(beerRecipe.brewersTips),
               FoodPairings(beerRecipe.foodPairing),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Contributed by: ${_formatContributedBy(beerRecipe.contributedBy)}',
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+  String _formatContributedBy(String contributedBy) {
+    return contributedBy.split('<')[0];
+  }
+}
 
 class BrewersTips extends StatelessWidget {
   const BrewersTips(
