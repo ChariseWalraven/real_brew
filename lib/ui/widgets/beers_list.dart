@@ -86,11 +86,70 @@ class BeersListItem extends ConsumerWidget {
             ],
           ),
         ),
-        child: ListTile(
-          title: Text(
+        child: BeerTile(beer: beer),
+      ),
+    );
+  }
+}
+
+class BeerTile extends ConsumerStatefulWidget {
+  const BeerTile({super.key, required this.beer});
+
+  final BeerRecipe beer;
+
+  @override
+  ConsumerState<BeerTile> createState() => _BeerTileState();
+}
+
+class _BeerTileState extends ConsumerState<BeerTile> {
+  bool isFavourite = false;
+
+  bool checkIfFavourite(BeerRecipe beer, WidgetRef ref) {
+    final favouriteBeers = ref.read(favouriteBeersProvider.notifier);
+
+    return favouriteBeers.state
+        .where((BeerRecipe b) => b.id == beer.id)
+        .isNotEmpty;
+  }
+
+  void handleFavouriteTap(BeerRecipe selectedBeer, WidgetRef ref) {
+    final favouriteBeers = ref.read(favouriteBeersProvider.notifier);
+
+    bool isAlreadyPresent = favouriteBeers.state
+        .where((BeerRecipe beer) => beer.id == selectedBeer.id)
+        .isNotEmpty;
+
+    if (isAlreadyPresent) {
+      favouriteBeers.state.remove(selectedBeer);
+      setState(() {
+        isFavourite = false;
+      });
+    } else {
+      favouriteBeers.state.add(selectedBeer);
+      setState(() {
+        isFavourite = true;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      isFavourite = checkIfFavourite(widget.beer, ref);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Icon favouriteIcon = isFavourite
+        ? const Icon(Icons.favorite)
+        : const Icon(Icons.favorite_border);
+    return ListTile(
+      title: Text(
           style: Theme.of(context).textTheme.bodyMedium,
           widget.beer.name,
-              overflow: TextOverflow.ellipsis),
+          overflow: TextOverflow.ellipsis),
       trailing: IconButton(
         onPressed: () => handleFavouriteTap(widget.beer, ref),
         icon: favouriteIcon,
