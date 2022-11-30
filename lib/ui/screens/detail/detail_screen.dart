@@ -5,6 +5,8 @@ import 'package:real_brew/state/beers.dart';
 import 'package:real_brew/ui/widgets/beers_widgets.dart';
 import 'package:real_brew/util/colours.dart';
 
+import 'method.dart';
+
 class DetailScreen extends ConsumerWidget {
   const DetailScreen({
     super.key,
@@ -98,86 +100,6 @@ class BeerRecipeDetail extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class Method extends StatelessWidget {
-  const Method({
-    Key? key,
-    required this.method,
-  }) : super(key: key);
-  final m.Method method;
-
-  @override
-  Widget build(BuildContext context) {
-    // use the first mash temp because most recipes only have one. Potential for having a list later.
-    final m.MashTemp firstMashTemp = method.mashTemp.first;
-    final m.Fermentation fermentation = method.fermentation;
-    return Column(
-      children: [
-        const SectionTitle('METHOD'),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const BoldText(
-              'Mash Temp:',
-              fontWeight: FontWeight.w700,
-            ),
-            Text(
-                '${firstMashTemp.temp.value} ${firstMashTemp.temp.unit} | ${firstMashTemp.duration} min')
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const BoldText(
-              'Fermentation:',
-              fontWeight: FontWeight.w700,
-            ),
-            Text('${fermentation.temp.value}° ${fermentation.temp.unit}')
-          ],
-        ),
-        if (method.twist != null && method.twist!.isNotEmpty)
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Wrap(
-              runSpacing: 5,
-              children: [
-                const BoldText(
-                  'Twist',
-                  fontWeight: FontWeight.w700,
-                ),
-                Text(
-                  method.twist!,
-                  overflow: TextOverflow.visible,
-                  textAlign: TextAlign.justify,
-                ),
-              ],
-            ),
-          )
-      ],
-    );
-  }
-}
-
-class BoldText extends StatelessWidget {
-  const BoldText(
-    this.text, {
-    this.fontWeight,
-    Key? key,
-  }) : super(key: key);
-
-  final String text;
-  final FontWeight? fontWeight;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontWeight: fontWeight ?? FontWeight.w800,
       ),
     );
   }

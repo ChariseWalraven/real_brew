@@ -1,5 +1,26 @@
 import 'package:flutter/material.dart';
 
+class BoldText extends StatelessWidget {
+  const BoldText(
+    this.text, {
+    this.fontWeight,
+    Key? key,
+  }) : super(key: key);
+
+  final String text;
+  final FontWeight? fontWeight;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontWeight: fontWeight ?? FontWeight.w800,
+      ),
+    );
+  }
+}
+
 class ItalicText extends StatelessWidget {
   const ItalicText(
     this.text, {
