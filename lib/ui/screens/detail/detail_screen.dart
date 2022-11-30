@@ -107,6 +107,7 @@ class BeerRecipeDetail extends StatelessWidget {
               Ingredients(ingredients: beerRecipe.ingredients),
               Method(method: beerRecipe.method),
               BrewersTips(beerRecipe.brewersTips),
+              FoodPairings(beerRecipe.foodPairing),
             ],
           ),
         ),
@@ -149,5 +150,34 @@ class _NoBeerRecipeProvided extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container();
+  }
+}
+
+class FoodPairings extends StatelessWidget {
+  const FoodPairings(
+    this.foodPairings, {
+    super.key,
+  });
+
+  final List<String> foodPairings;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SectionTitle('FOOD PAIRINGS'),
+          ListView.builder(
+            shrinkWrap: true,
+            itemCount: foodPairings.length,
+            itemBuilder: (context, index) => ItalicText(
+              foodPairings[index],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
