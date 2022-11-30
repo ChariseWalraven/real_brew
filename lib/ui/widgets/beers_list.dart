@@ -3,22 +3,31 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:real_brew/models/beer_recipe.dart';
 import 'package:real_brew/state/beers.dart';
 import 'package:real_brew/ui/screens/detail/detail_screen.dart';
+import 'package:real_brew/util/constants.dart';
 import 'package:real_brew/util/functions.dart';
 
 class BeersList extends ConsumerWidget {
   const BeersList({super.key});
+
+  handleOnTap(BuildContext context, WidgetRef ref, BeerRecipe beer) {
+    ref.read(selectedBeerProvider.notifier).state = beer;
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const DetailScreen()));
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     AsyncValue<List<BeerRecipe>> beersRef = ref.watch(beersProvider);
 
     return beersRef.when(
-      loading: () => const CircularProgressIndicator(),
+      loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, stackTrace) {
         debugPrintStack(stackTrace: stackTrace, label: error.toString());
-        return const Text(
-          style: TextStyle(color: Colors.red),
-          "Oh no! Technical difficulties at the brewery! Please try again later",
+        return const Center(
+          child: Text(
+            style: TextStyle(color: Colors.red),
+            "Oh no! Technical difficulties at the brewery! Please try again later",
+          ),
         );
       },
       data: (beers) {
@@ -30,13 +39,9 @@ class BeersList extends ConsumerWidget {
             itemBuilder: (context, index) {
               BeerRecipe beer = beers[index];
               return Container(
-                margin: const EdgeInsets.symmetric(vertical: 10),
+                margin: const EdgeInsets.symmetric(vertical: kVerticalSpacing),
                 child: GestureDetector(
-                    onTap: () {
-                      ref.read(selectedBeerProvider.notifier).state = beer;
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const DetailScreen()));
-                    },
+                    onTap: () => handleOnTap(context, ref, beer),
                     child: BeersListItem(beer: beer)),
               );
             },
@@ -46,7 +51,6 @@ class BeersList extends ConsumerWidget {
     );
   }
 }
-
 
 class BeersListItem extends StatelessWidget {
   const BeersListItem({
@@ -85,7 +89,6 @@ class BeersListItem extends StatelessWidget {
           ),
         ),
         child: ListTile(
-          // contentPadding: const EdgeInsets.symmetric(vertical: 15),
           title: Text(
               style: theme.textTheme.bodyMedium,
               beer.name,
