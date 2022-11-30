@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:real_brew/models/beer_recipe.dart';
 import 'package:real_brew/models/hop.dart';
-import 'package:real_brew/models/malt.dart';
 import 'package:real_brew/state/beers.dart';
 import 'package:real_brew/ui/widgets/beers_widgets.dart';
-import 'package:real_brew/ui/widgets/real_brew_scaffold.dart';
 import 'package:real_brew/util/colours.dart';
 
 class DetailScreen extends ConsumerWidget {
@@ -175,26 +172,6 @@ class Hops extends StatelessWidget {
       hops.where((Hop hop) => hop.add == add).toList();
 }
 
-class ItalicText extends StatelessWidget {
-  const ItalicText(
-    this.text, {
-    Key? key,
-    this.textAlign,
-  }) : super(key: key);
-
-  final String text;
-  final TextAlign? textAlign;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: const TextStyle(fontStyle: FontStyle.italic),
-      textAlign: textAlign,
-    );
-  }
-}
-
 class HopList extends StatelessWidget {
   const HopList({
     Key? key,
@@ -241,55 +218,6 @@ class _NoBeerRecipeProvided extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container();
-  }
-}
-
-class Malts extends StatelessWidget {
-  const Malts({
-    super.key,
-    required this.malts,
-  });
-
-  final List malts;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: malts.length,
-      itemBuilder: (context, index) {
-        Malt malt = malts[index];
-        return Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 5.0),
-              child: SizedBox(
-                width: 35,
-                child: ItalicText(
-                  malt.amount.value.toString(),
-                  textAlign: TextAlign.end,
-                ),
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              fit: FlexFit.loose,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 5.0),
-                child: ItalicText(
-                  malt.amount.unit,
-                ),
-              ),
-            ),
-            Flexible(
-              flex: 2,
-              fit: FlexFit.tight,
-              child: Text(malt.name),
-            ),
-          ],
-        );
-      },
-    );
   }
 }
 

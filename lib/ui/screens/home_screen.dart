@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:real_brew/ui/widgets/beers_widgets.dart';
-import 'package:real_brew/ui/widgets/real_brew_scaffold.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
