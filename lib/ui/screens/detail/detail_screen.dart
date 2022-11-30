@@ -89,7 +89,16 @@ class BeerRecipeDetail extends StatelessWidget {
                 beerRecipe.name,
                 style: textTheme.displaySmall,
               ),
-              Text(beerRecipe.tagline),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Wrap(
+                  children: [
+                    TextWithReadMore(
+                      beerRecipe.description,
+                    ),
+                  ],
+                ),
+              ),
               StatsRow(
                 abv: beerRecipe.abv,
                 ph: beerRecipe.ph,
