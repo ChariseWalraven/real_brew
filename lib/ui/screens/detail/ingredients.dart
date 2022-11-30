@@ -2,10 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:real_brew/models/models.dart';
 import 'package:real_brew/ui/widgets/text_widgets.dart';
 
+class Ingredients extends StatelessWidget {
+  const Ingredients({
+    Key? key,
+    required this.beerRecipe,
+  }) : super(key: key);
+
+  final BeerRecipe beerRecipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const SectionTitle('INGREDIENTS'),
+        IngredientRow(
+          'Malt',
+          child: Malts(
+            beerRecipe.ingredients.malt,
+          ),
+        ),
+        if (beerRecipe.ingredients.hops.isNotEmpty)
+          IngredientRow(
+            'Hops',
+            child: Hops(beerRecipe.ingredients.hops),
+          ),
+        if (beerRecipe.ingredients.yeast.isNotEmpty)
+          IngredientRow(
+            'Yeast',
+            child: ItalicText(beerRecipe.ingredients.yeast),
+          ),
+      ],
+    );
+  }
+}
+
 class Malts extends StatelessWidget {
-  const Malts({
+  const Malts(
+    this.malts, {
     super.key,
-    required this.malts,
   });
 
   final List malts;
@@ -47,37 +83,6 @@ class Malts extends StatelessWidget {
           ],
         );
       },
-    );
-  }
-}
-
-class Ingredients extends StatelessWidget {
-  const Ingredients({
-    Key? key,
-    required this.beerRecipe,
-  }) : super(key: key);
-
-  final BeerRecipe beerRecipe;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const SectionTitle('INGREDIENTS'),
-        IngredientRow(
-          'Malt',
-          child: Malts(
-            malts: beerRecipe.ingredients.malt,
-          ),
-        ),
-        if (beerRecipe.ingredients.hops.isNotEmpty)
-          IngredientRow(
-            'Hops',
-            child: Hops(beerRecipe.ingredients.hops),
-          ),
-      ],
     );
   }
 }
