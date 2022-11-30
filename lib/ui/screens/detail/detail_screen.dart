@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:real_brew/models/models.dart' as m;
 import 'package:real_brew/state/beers.dart';
 import 'package:real_brew/ui/screens/detail/widgets.dart';
-import 'package:real_brew/ui/widgets/beers_widgets.dart';
+import 'package:real_brew/ui/widgets/widgets.dart';
 import 'package:real_brew/util/colours.dart';
 import 'package:real_brew/util/constants.dart';
 

@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:real_brew/ui/screens/home_screen.dart';
-import 'package:real_brew/ui/widgets/beers_widgets.dart';
+import 'package:real_brew/ui/widgets/widgets.dart';
 
 void main() {
   group('Home Screen', () {
