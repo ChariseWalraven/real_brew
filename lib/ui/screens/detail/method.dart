@@ -11,9 +11,10 @@ class Method extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // use the first mash temp because most recipes only have one. Potential for having a list later.
-    final m.MashTemp firstMashTemp = method.mashTemp.first;
     final m.Fermentation fermentation = method.fermentation;
+    // use the first mash temp because most recipes only have one. Potential for having a list later.
+    final String mashTempText = _formatMashTempText(method.mashTemp.first);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -30,8 +31,7 @@ class Method extends StatelessWidget {
                 'Mash Temp:',
                 fontWeight: FontWeight.w700,
               ),
-              Text(
-                  '${firstMashTemp.temp.value} ${firstMashTemp.temp.unit} | ${firstMashTemp.duration} min')
+              Text(mashTempText)
             ],
           ),
           Row(
@@ -65,5 +65,14 @@ class Method extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _formatMashTempText(m.MashTemp firstMashTemp) {
+    String mashTempText =
+        '${firstMashTemp.temp.value}° ${firstMashTemp.temp.unit}';
+    if (firstMashTemp.duration > 0) {
+      mashTempText += ' | ${firstMashTemp.duration} min';
+    }
+    return mashTempText;
   }
 }
