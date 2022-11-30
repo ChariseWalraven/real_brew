@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:real_brew/ui/widgets/text_widgets.dart';
 import 'package:real_brew/models/models.dart' as m;
+import 'package:real_brew/util/constants.dart';
 
 class Method extends StatelessWidget {
   const Method({
@@ -16,12 +17,12 @@ class Method extends StatelessWidget {
     final String mashTempText = _formatMashTempText(method.mashTemp.first);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: kVerticalSpacing),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
+            padding: EdgeInsets.symmetric(vertical: kVerticalSpacing),
             child: SectionTitle('METHOD'),
           ),
           Row(
@@ -46,7 +47,7 @@ class Method extends StatelessWidget {
           ),
           if (method.twist != null && method.twist!.isNotEmpty)
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: kVerticalSpacing),
               child: Wrap(
                 runSpacing: 5,
                 children: [

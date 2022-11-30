@@ -5,6 +5,7 @@ import 'package:real_brew/state/beers.dart';
 import 'package:real_brew/ui/screens/detail/widgets.dart';
 import 'package:real_brew/ui/widgets/beers_widgets.dart';
 import 'package:real_brew/util/colours.dart';
+import 'package:real_brew/util/constants.dart';
 
 import 'ingredients.dart';
 import 'method.dart';
@@ -93,7 +94,7 @@ class BeerRecipeDetail extends StatelessWidget {
               ),
               ItalicText(beerRecipe.tagline),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.symmetric(vertical: kVerticalSpacing),
                 child: Wrap(
                   children: [
                     TextWithReadMore(

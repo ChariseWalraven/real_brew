@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:real_brew/ui/widgets/text_widgets.dart';
 import 'package:real_brew/models/models.dart';
+import 'package:real_brew/util/constants.dart';
 
 class ContributedBy extends StatelessWidget {
   const ContributedBy(this.contributedBy, {super.key});
@@ -10,7 +11,7 @@ class ContributedBy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: kVerticalSpacing),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -34,12 +35,12 @@ class BrewersTips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: kVerticalSpacing),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
+            padding: EdgeInsets.symmetric(vertical: kVerticalSpacing),
             child: SectionTitle("BREWER'S TIPS"),
           ),
           Text(
@@ -63,7 +64,7 @@ class FoodPairings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: kVerticalSpacing),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
