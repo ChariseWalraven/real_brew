@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:real_brew/models/beer_recipe.dart';
 import 'package:real_brew/state/beers.dart';
+import 'package:real_brew/ui/widgets/beers_list.dart';
 
 class FavouritesScreen extends ConsumerWidget {
   const FavouritesScreen({super.key});
@@ -18,9 +19,19 @@ class FavouritesScreen extends ConsumerWidget {
         ),
         if (favouriteBeers.isNotEmpty)
           Expanded(
-            child: ListView.builder(
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 3 / 4,
+              ),
+              shrinkWrap: true,
               itemCount: favouriteBeers.length,
-              itemBuilder: (context, index) => Text(favouriteBeers[index].name),
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.all(10),
+                child: BeersListItem(
+                  beer: favouriteBeers[index],
+                ),
+              ),
             ),
           )
         else
