@@ -53,6 +53,14 @@ class SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
+      style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+            fontWeight: FontWeight.w500,
+            letterSpacing: 2,
+            fontSize: 18,
+          ),
+    );
+  }
+}
 
 class TextWithReadMore extends StatefulWidget {
   const TextWithReadMore(
