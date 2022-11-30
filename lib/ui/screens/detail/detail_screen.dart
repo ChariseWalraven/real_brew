@@ -106,9 +106,38 @@ class BeerRecipeDetail extends StatelessWidget {
               ),
               Ingredients(ingredients: beerRecipe.ingredients),
               Method(method: beerRecipe.method),
+              BrewersTips(beerRecipe.brewersTips),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+class BrewersTips extends StatelessWidget {
+  const BrewersTips(
+    this.brewersTips, {
+    Key? key,
+  }) : super(key: key);
+
+  final String brewersTips;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: SectionTitle("BREWER'S TIPS"),
+          ),
+          Text(
+            brewersTips,
+            textAlign: TextAlign.justify,
+          ),
+        ],
       ),
     );
   }
