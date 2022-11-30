@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:real_brew/models/models.dart';
+import 'package:real_brew/models/models.dart' as m;
 import 'package:real_brew/ui/widgets/text_widgets.dart';
 
 class Ingredients extends StatelessWidget {
   const Ingredients({
     Key? key,
-    required this.beerRecipe,
+    required this.ingredients,
   }) : super(key: key);
 
-  final BeerRecipe beerRecipe;
+  final m.Ingredients ingredients;
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +20,18 @@ class Ingredients extends StatelessWidget {
         IngredientRow(
           'Malt',
           child: Malts(
-            beerRecipe.ingredients.malt,
+            ingredients.malt,
           ),
         ),
-        if (beerRecipe.ingredients.hops.isNotEmpty)
+        if (ingredients.hops.isNotEmpty)
           IngredientRow(
             'Hops',
-            child: Hops(beerRecipe.ingredients.hops),
+            child: Hops(ingredients.hops),
           ),
-        if (beerRecipe.ingredients.yeast.isNotEmpty)
+        if (ingredients.yeast.isNotEmpty)
           IngredientRow(
             'Yeast',
-            child: ItalicText(beerRecipe.ingredients.yeast),
+            child: ItalicText(ingredients.yeast),
           ),
       ],
     );
@@ -52,7 +52,7 @@ class Malts extends StatelessWidget {
       shrinkWrap: true,
       itemCount: malts.length,
       itemBuilder: (context, index) {
-        Malt malt = malts[index];
+        m.Malt malt = malts[index];
         return Row(
           children: [
             Padding(
@@ -93,13 +93,13 @@ class Hops extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final List<Hop> hops;
+  final List<m.Hop> hops;
 
   @override
   Widget build(BuildContext context) {
-    final List<Hop> startHops = _filterHops(hops, 'start');
-    final List<Hop> middleHops = _filterHops(hops, 'middle');
-    final List<Hop> endHops = _filterHops(hops, 'end');
+    final List<m.Hop> startHops = _filterHops(hops, 'start');
+    final List<m.Hop> middleHops = _filterHops(hops, 'middle');
+    final List<m.Hop> endHops = _filterHops(hops, 'end');
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -113,8 +113,8 @@ class Hops extends StatelessWidget {
     );
   }
 
-  List<Hop> _filterHops(List<Hop> hops, String add) =>
-      hops.where((Hop hop) => hop.add == add).toList();
+  List<m.Hop> _filterHops(List<m.Hop> hops, String add) =>
+      hops.where((m.Hop hop) => hop.add == add).toList();
 }
 
 class HopList extends StatelessWidget {
@@ -123,7 +123,7 @@ class HopList extends StatelessWidget {
     required this.hops,
   }) : super(key: key);
 
-  final List<Hop> hops;
+  final List<m.Hop> hops;
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +132,7 @@ class HopList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: hops.length,
       itemBuilder: (context, index) {
-        Hop hop = hops[index];
+        m.Hop hop = hops[index];
         return Text(
             '${hop.amount.value} ${hop.amount.unit} ${hop.name} (${hop.attribute})');
       },

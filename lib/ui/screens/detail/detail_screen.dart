@@ -95,7 +95,7 @@ class BeerRecipeDetail extends StatelessWidget {
                 ph: beerRecipe.ph,
                 volume: beerRecipe.volume,
               ),
-              Ingredients(beerRecipe: beerRecipe),
+              Ingredients(ingredients: beerRecipe.ingredients),
               Method(method: beerRecipe.method),
             ],
           ),
