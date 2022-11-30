@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:real_brew/models/beer_recipe.dart';
 import 'package:real_brew/state/beers.dart';
-import 'package:real_brew/ui/screens/detail_screen.dart';
+import 'package:real_brew/ui/screens/detail/detail_screen.dart';
 import 'package:real_brew/util/functions.dart';
 
 class BeersList extends ConsumerWidget {

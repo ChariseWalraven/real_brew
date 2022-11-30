@@ -3,7 +3,7 @@ import 'package:real_brew/models/beer_recipe.dart';
 import 'package:real_brew/models/volume.dart';
 
 export 'beers_list.dart';
-export 'ingredients.dart';
+export '../screens/detail/ingredients.dart';
 export 'text_widgets.dart';
 export 'real_brew_scaffold.dart';
 
