@@ -122,19 +122,25 @@ class StatsRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Stat(
-            statTitle: 'PH',
-            statText: ph.toString(),
+          Expanded(
+            child: Stat(
+              statTitle: 'PH',
+              statText: ph.toString(),
+            ),
           ),
           const _CustomDivider(),
-          Stat(
-            statText: abv.toString(),
-            statTitle: 'STRENGTH',
+          Expanded(
+            child: Stat(
+              statText: abv.toString(),
+              statTitle: 'STRENGTH',
+            ),
           ),
           const _CustomDivider(),
-          Stat(
-            statText: '${volume.value} ${volume.unit}',
-            statTitle: 'VOLUME',
+          Expanded(
+            child: Stat(
+              statText: '${volume.value} ${volume.unit}',
+              statTitle: 'VOLUME',
+            ),
           ),
         ],
       ),
