@@ -6,6 +6,19 @@ class FavouritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('This is the favourites page');
+    return Column(
+      children: [
+        Text(
+          'Favourites',
+          style: Theme.of(context).textTheme.displaySmall,
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: 2,
+            itemBuilder: (context, index) => Text('Test'),
+          ),
+        )
+      ],
+    );
   }
 }
