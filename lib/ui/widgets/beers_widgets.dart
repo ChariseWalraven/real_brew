@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:real_brew/models/beer_recipe.dart';
-import 'package:real_brew/models/volume.dart';
+import 'package:real_brew/models/models.dart';
 
 export 'beers_list.dart';
 export '../screens/detail/ingredients.dart';

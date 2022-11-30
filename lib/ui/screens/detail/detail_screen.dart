@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:real_brew/models/beer_recipe.dart';
-import 'package:real_brew/models/hop.dart';
 import 'package:real_brew/state/beers.dart';
 import 'package:real_brew/ui/widgets/beers_widgets.dart';
 import 'package:real_brew/util/colours.dart';

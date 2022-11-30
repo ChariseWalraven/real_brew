@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:real_brew/models/beer_recipe.dart';
-import 'package:real_brew/models/hop.dart';
-import 'package:real_brew/models/malt.dart';
+import 'package:real_brew/models/models.dart';
 import 'package:real_brew/ui/widgets/text_widgets.dart';
 
 class Malts extends StatelessWidget {

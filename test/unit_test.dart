@@ -2,15 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:real_brew/models/amount.dart';
-import 'package:real_brew/models/beer_recipe.dart';
-import 'package:real_brew/models/fermentation.dart';
-import 'package:real_brew/models/hop.dart';
-import 'package:real_brew/models/ingredients.dart';
-import 'package:real_brew/models/malt.dart';
-import 'package:real_brew/models/mash_temp.dart';
-import 'package:real_brew/models/method.dart';
-import 'package:real_brew/models/volume.dart';
+import 'package:real_brew/models/models.dart';
 
 import 'package:real_brew/services/beer_api.mocks.dart';
 import 'package:real_brew/services/beer_api.dart';
