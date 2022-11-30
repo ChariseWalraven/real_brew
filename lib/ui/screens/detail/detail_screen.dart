@@ -89,6 +89,7 @@ class BeerRecipeDetail extends StatelessWidget {
                 beerRecipe.name,
                 style: textTheme.displaySmall,
               ),
+              ItalicText(beerRecipe.tagline),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Wrap(
