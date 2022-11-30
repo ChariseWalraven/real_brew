@@ -53,7 +53,54 @@ class SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 18),
+
+class TextWithReadMore extends StatefulWidget {
+  const TextWithReadMore(
+    this.text, {
+    super.key,
+  });
+
+  final String text;
+
+  @override
+  State<TextWithReadMore> createState() => _TextWithReadMoreState();
+}
+
+class _TextWithReadMoreState extends State<TextWithReadMore> {
+  bool isExpanded = false;
+
+  void handleReadMoreOnTap() {
+    setState(() {
+      isExpanded = !isExpanded;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    String readMoreOrLessText = isExpanded ? 'Read less' : 'Read more';
+    return Column(
+      children: [
+        buildText(widget.text),
+        if (widget.text.length > 120)
+          GestureDetector(
+            onTap: handleReadMoreOnTap,
+            child: Text(
+              readMoreOrLessText,
+              style: TextStyle(
+                  fontStyle: FontStyle.italic, color: Colors.grey.shade300),
+            ),
+          )
+      ],
+    );
+  }
+
+  Widget buildText(String text) {
+    final lines = isExpanded ? null : 2;
+    return Text(
+      text,
+      maxLines: lines,
+      textAlign: TextAlign.justify,
+      overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
     );
   }
 }
