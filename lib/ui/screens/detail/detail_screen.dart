@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:real_brew/models/models.dart' as m;
 import 'package:real_brew/state/beers.dart';
+import 'package:real_brew/ui/screens/detail/widgets.dart';
 import 'package:real_brew/ui/widgets/beers_widgets.dart';
 import 'package:real_brew/util/colours.dart';
 
@@ -109,53 +110,10 @@ class BeerRecipeDetail extends StatelessWidget {
               Method(method: beerRecipe.method),
               BrewersTips(beerRecipe.brewersTips),
               FoodPairings(beerRecipe.foodPairing),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Contributed by: ${_formatContributedBy(beerRecipe.contributedBy)}',
-                    ),
-                  ],
-                ),
-              ),
+              ContributedBy(beerRecipe.contributedBy),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  String _formatContributedBy(String contributedBy) {
-    return contributedBy.split('<')[0];
-  }
-}
-
-class BrewersTips extends StatelessWidget {
-  const BrewersTips(
-    this.brewersTips, {
-    Key? key,
-  }) : super(key: key);
-
-  final String brewersTips;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: SectionTitle("BREWER'S TIPS"),
-          ),
-          Text(
-            brewersTips,
-            textAlign: TextAlign.justify,
-          ),
-        ],
       ),
     );
   }
@@ -167,34 +125,5 @@ class _NoBeerRecipeProvided extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container();
-  }
-}
-
-class FoodPairings extends StatelessWidget {
-  const FoodPairings(
-    this.foodPairings, {
-    super.key,
-  });
-
-  final List<String> foodPairings;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SectionTitle('FOOD PAIRINGS'),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: foodPairings.length,
-            itemBuilder: (context, index) => ItalicText(
-              foodPairings[index],
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }
